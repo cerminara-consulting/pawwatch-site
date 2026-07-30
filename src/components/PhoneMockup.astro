@@ -1,0 +1,99 @@
+---
+// A simplified iPhone mockup showing a hazard map with pins.
+// Pure SVG — no external asset dependencies, scales to any size.
+---
+
+<svg
+  class="phone-mockup"
+  viewBox="0 0 280 560"
+  xmlns="http://www.w3.org/2000/svg"
+  role="img"
+  aria-label="Paw Watch app showing a hazard map with three color-coded pins"
+>
+  <defs>
+    <!-- Phone body -->
+    <linearGradient id="phoneBody" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#1a1a1a" />
+      <stop offset="100%" stop-color="#0a0a0a" />
+    </linearGradient>
+    <!-- Cream map background -->
+    <linearGradient id="mapBg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#f3e9e0" />
+      <stop offset="100%" stop-color="#faf3ef" />
+    </linearGradient>
+    <!-- Subtle "road" overlay -->
+    <pattern id="streets" x="0" y="0" width="60" height="60" patternUnits="userSpaceOnUse">
+      <path d="M 0 30 L 60 30" stroke="#e8e0d4" stroke-width="3" />
+      <path d="M 30 0 L 30 60" stroke="#e8e0d4" stroke-width="3" />
+    </pattern>
+    <!-- Pin shadow -->
+    <filter id="pinShadow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="1.5" />
+      <feOffset dx="0" dy="1" result="offsetblur" />
+      <feComponentTransfer><feFuncA type="linear" slope="0.4" /></feComponentTransfer>
+      <feMerge>
+        <feMergeNode />
+        <feMergeNode in="SourceGraphic" />
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Phone outer body -->
+  <rect x="0" y="0" width="280" height="560" rx="36" fill="url(#phoneBody)" />
+  <!-- Screen background -->
+  <rect x="10" y="14" width="260" height="532" rx="28" fill="url(#mapBg)" />
+  <!-- Map streets pattern -->
+  <rect x="10" y="14" width="260" height="532" rx="28" fill="url(#streets)" />
+
+  <!-- A curving "water" / park area -->
+  <path
+    d="M 0 380 Q 60 360 110 380 T 200 380 T 280 380"
+    stroke="#c3d6c4"
+    stroke-width="32"
+    fill="none"
+    stroke-linecap="round"
+    opacity="0.4"
+  />
+
+  <!-- Status bar (time + signal) -->
+  <text x="38" y="38" font-family="-apple-system, system-ui, sans-serif" font-size="13" font-weight="600" fill="#1a1a1a">9:41</text>
+  <g transform="translate(220, 28)">
+    <rect x="0" y="0" width="14" height="6" rx="1" fill="#1a1a1a" />
+    <rect x="16" y="0" width="14" height="6" rx="1" fill="#1a1a1a" />
+    <rect x="32" y="0" width="14" height="6" rx="1" fill="#1a1a1a" />
+  </g>
+
+  <!-- Page header -->
+  <text x="30" y="78" font-family="Georgia, serif" font-size="18" font-weight="700" fill="#183d62">Paw Watch</text>
+  <text x="30" y="96" font-family="-apple-system, system-ui, sans-serif" font-size="11" fill="#4a5563">3 hazards nearby</text>
+
+  <!-- Pin: high severity (red) -->
+  <g filter="url(#pinShadow)">
+    <circle cx="100" cy="200" r="14" fill="#a6432d" stroke="white" stroke-width="2.5" />
+  </g>
+  <text x="100" y="205" font-family="-apple-system, sans-serif" font-size="11" font-weight="700" fill="white" text-anchor="middle">!</text>
+
+  <!-- Pin: medium severity (orange) -->
+  <g filter="url(#pinShadow)">
+    <circle cx="200" cy="158" r="11" fill="#d4a04f" stroke="white" stroke-width="2.5" />
+  </g>
+  <text x="200" y="163" font-family="-apple-system, sans-serif" font-size="9" font-weight="700" fill="white" text-anchor="middle">!</text>
+
+  <!-- Pin: low severity (yellow) -->
+  <g filter="url(#pinShadow)">
+    <circle cx="160" cy="320" r="9" fill="#e8c465" stroke="white" stroke-width="2.5" />
+  </g>
+
+  <!-- Pull-up sheet at bottom -->
+  <rect x="14" y="400" width="252" height="142" rx="20" fill="white" filter="url(#pinShadow)" />
+  <rect x="120" y="412" width="40" height="4" rx="2" fill="#d8cfc4" />
+  <text x="30" y="442" font-family="Georgia, serif" font-size="13" font-weight="700" fill="#183d62">Loose dog reported</text>
+  <text x="30" y="460" font-family="-apple-system, sans-serif" font-size="10" fill="#4a5563">300m away · 4 min ago</text>
+  <rect x="30" y="478" width="68" height="22" rx="11" fill="#fde8e3" />
+  <text x="64" y="492" font-family="-apple-system, sans-serif" font-size="9" font-weight="600" fill="#a6432d" text-anchor="middle">HIGH SEVERITY</text>
+  <text x="30" y="520" font-family="-apple-system, sans-serif" font-size="10" fill="#4a5563">Off-leash near the entrance.</text>
+
+  <!-- FAB -->
+  <circle cx="240" cy="370" r="22" fill="#a6432d" filter="url(#pinShadow)" />
+  <text x="240" y="376" font-family="-apple-system, sans-serif" font-size="22" font-weight="300" fill="white" text-anchor="middle">+</text>
+</svg>

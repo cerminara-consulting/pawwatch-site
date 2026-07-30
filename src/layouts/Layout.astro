@@ -1,0 +1,292 @@
+---
+interface Props {
+  title: string;
+  description: string;
+}
+
+const { title, description } = Astro.props;
+const path = Astro.url.pathname;
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#183D62" />
+
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content="https://paw-watch.app/og-image.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content={`https://paw-watch.app${path}`} />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Paw Watch" />
+    <meta name="twitter:card" content="summary_large_image" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" sizes="any" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
+    <meta name="description" content={description} />
+    <title>{title}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <a href="#main" class="skip-link">Skip to main content</a>
+    <header class="site-header">
+      <div class="wrap header-row">
+        <a class="wordmark" href="/">
+          <span class="paw" aria-hidden="true">🐾</span>
+          <span>Paw Watch</span>
+        </a>
+        <nav>
+          <a href="/privacy-policy/" aria-current={path.startsWith('/privacy-policy') ? 'page' : undefined}>Privacy Policy</a>
+          <a href="/support/" aria-current={path.startsWith('/support') ? 'page' : undefined}>Support</a>
+        </nav>
+      </div>
+    </header>
+    <main id="main">
+      <slot />
+    </main>
+    <footer class="site-footer">
+      <div class="wrap footer-row">
+        <p>© 2026 Paw Watch. A Cerminara Consulting product.</p>
+        <p class="links">
+          <a href="/privacy-policy/">Privacy</a>
+          <span aria-hidden="true">·</span>
+          <a href="/support/">Support</a>
+        </p>
+      </div>
+    </footer>
+  </body>
+</html>
+
+<style is:global>
+  :root {
+    --cream: #faf3ef;
+    --cream-warm: #f3e9e0;
+    --navy: #183d62;
+    --navy-soft: #2a5680;
+    --teal: #4a8b8c;
+    --ink: #1a1a1a;
+    --ink-soft: #4a5563;
+    --rule: #d8cfc4;
+    --rule-soft: #ebe4d9;
+
+    --font-display: "Fraunces", "Georgia", serif;
+    --font-body: "Inter", system-ui, -apple-system, sans-serif;
+  }
+
+  * {
+    box-sizing: border-box;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    margin: 0;
+    background: var(--cream);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+
+  /* Skip link for keyboard users */
+  .skip-link {
+    position: absolute;
+    top: -40px;
+    left: 0;
+    background: var(--navy);
+    color: var(--cream);
+    padding: 8px 16px;
+    z-index: 100;
+    text-decoration: none;
+    border-radius: 0 0 4px 0;
+  }
+  .skip-link:focus {
+    top: 0;
+  }
+
+  .wrap {
+    max-width: 1140px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+  .wrap-narrow {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* Header */
+  .site-header {
+    background: var(--cream);
+    border-bottom: 1px solid var(--rule);
+    padding: 18px 0;
+  }
+  .header-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+  }
+  .wordmark {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--navy);
+    text-decoration: none;
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+  }
+  .wordmark .paw {
+    font-size: 1.25em;
+    line-height: 1;
+  }
+  .site-header nav {
+    display: flex;
+    gap: 20px;
+  }
+  .site-header nav a {
+    color: var(--ink-soft);
+    text-decoration: none;
+    font-size: 0.95rem;
+    font-weight: 500;
+    padding: 6px 0;
+    border-bottom: 2px solid transparent;
+    transition: color 0.15s ease, border-color 0.15s ease;
+  }
+  .site-header nav a:hover,
+  .site-header nav a[aria-current="page"] {
+    color: var(--navy);
+    border-color: var(--navy);
+  }
+
+  /* Footer */
+  .site-footer {
+    border-top: 1px solid var(--rule);
+    padding: 20px 0;
+    margin-top: 60px;
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+  }
+  .footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  .footer-row p {
+    margin: 0;
+  }
+  .footer-row .links {
+    display: inline-flex;
+    gap: 12px;
+  }
+  .footer-row .links a {
+    color: var(--ink-soft);
+    text-decoration: none;
+  }
+  .footer-row .links a:hover {
+    color: var(--navy);
+  }
+
+  /* Typography */
+  h1, h2, h3 {
+    font-family: var(--font-display);
+    color: var(--navy);
+    line-height: 1.2;
+    letter-spacing: -0.02em;
+    margin: 1.5em 0 0.5em;
+  }
+  h1 {
+    font-size: 2.25rem;
+    margin-top: 0.5em;
+  }
+  h2 {
+    font-size: 1.5rem;
+  }
+  h3 {
+    font-size: 1.15rem;
+  }
+  p {
+    margin: 0 0 1em;
+  }
+  a {
+    color: var(--navy);
+    text-decoration: underline;
+    text-decoration-color: var(--rule);
+    text-underline-offset: 3px;
+    transition: text-decoration-color 0.15s ease;
+  }
+  a:hover {
+    text-decoration-color: var(--navy);
+  }
+
+  /* Prose blocks */
+  .prose > * {
+    margin-bottom: 1em;
+  }
+  .prose ul, .prose ol {
+    padding-left: 1.4em;
+  }
+  .prose li {
+    margin-bottom: 0.4em;
+  }
+
+  /* Last updated stamp */
+  .last-updated {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 1.5em;
+  }
+
+  /* Definition list */
+  dl.contact {
+    display: grid;
+    grid-template-columns: max-content 1fr;
+    gap: 8px 24px;
+    margin: 1.5em 0;
+  }
+  dl.contact dt {
+    font-weight: 600;
+    color: var(--navy);
+  }
+  dl.contact dd {
+    margin: 0;
+  }
+
+  /* Cards (used on support page) */
+  .card {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    padding: 20px 24px;
+    margin: 1.5em 0;
+  }
+  .card h3 {
+    margin-top: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 600px) {
+    .header-row {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 12px;
+    }
+    h1 { font-size: 1.75rem; }
+    h2 { font-size: 1.3rem; }
+  }
+</style>

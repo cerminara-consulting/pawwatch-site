@@ -1,0 +1,271 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const lastUpdated = "2026-07-30";
+---
+
+<Layout
+  title="Privacy Policy — Paw Watch"
+  description="Paw Watch privacy policy. What we collect, how we use it, and your rights."
+>
+  <section class="wrap-narrow prose">
+    <h1>Privacy Policy</h1>
+    <p class="last-updated">Last updated {lastUpdated}</p>
+
+    <p>
+      Paw Watch ("we," "our," or "the app") is published by Cerminara
+      Consulting LLC, a Virginia-based independent consulting practice.
+      This policy explains what information Paw Watch collects, how we
+      use it, who we share it with, and the choices you have. We
+      designed Paw Watch to collect the minimum data needed to make
+      dog-walking safer — and nothing else.
+    </p>
+
+    <h2>What we collect</h2>
+
+    <h3>Account information</h3>
+    <p>
+      When you sign in, we receive your name and email from your sign-in
+      provider — either Apple (Sign in with Apple) or Google (Sign in
+      with Google). We use your display name to attribute reports to
+      you and to greet you in the app. We do not receive your Apple ID
+      password or your Google password.
+    </p>
+
+    <h3>Location data</h3>
+    <p>
+      With your permission, Paw Watch uses your device's location to:
+    </p>
+    <ul>
+      <li>
+        <strong>Verify your neighborhood.</strong> On first launch, we
+        use your location once to confirm you live in the area you say
+        you do. We do not store this location on your profile.
+      </li>
+      <li>
+        <strong>Tag the reports you submit.</strong> When you tap
+        "Report a hazard," we attach your current latitude and longitude
+        to the report so other walkers can see where it happened.
+      </li>
+      <li>
+        <strong>Show nearby hazards on the map.</strong> We use your
+        location to fetch hazards within walking distance.
+      </li>
+      <li>
+        <strong>Track walks.</strong> If you start a walk, we record
+        GPS points at regular intervals so you can review the route and
+        distance afterward. You can end a walk at any time; the data
+        stays on your device and only the start/end timestamps are
+        saved to your account if you sign in.
+      </li>
+      <li>
+        <strong>Send you alerts.</strong> If you've set a home radius,
+        we compare new reports to your saved location and notify you
+        when a hazard appears within your radius.
+      </li>
+    </ul>
+    <p>
+      You can disable location at any time in iOS Settings. Paw Watch
+      will continue to work for any features that don't require it.
+    </p>
+
+    <h3>Push notification tokens</h3>
+    <p>
+      If you grant notification permission, we receive a token from
+      Apple/Google that lets us send you push notifications. We store
+      this token on your profile and delete it when you sign out.
+    </p>
+
+    <h3>Photos (v1.0 ships without photo upload)</h3>
+    <p>
+      The current version of Paw Watch does not let you upload photos
+      of hazards. The information we collect is limited to text
+      descriptions, categories, and severity levels. A future version
+      may add photo upload — if so, we'll update this policy before
+      shipping.
+    </p>
+
+    <h3>Crash and performance data</h3>
+    <p>
+      We do not currently use a third-party crash reporter. If we add
+      one (e.g., Sentry, Crashlytics), we'll update this policy and
+      ask for your consent again.
+    </p>
+
+    <h2>What we don't collect</h2>
+    <ul>
+      <li>Your contacts list</li>
+      <li>Your photos or camera (beyond what you explicitly upload)</li>
+      <li>Your advertising identifier (IDFA)</li>
+      <li>Your purchase history</li>
+      <li>Your browsing history outside the app</li>
+      <li>Your microphone or audio</li>
+    </ul>
+
+    <h2>How we use your data</h2>
+    <p>
+      We use the data above to:
+    </p>
+    <ul>
+      <li>Show you hazards reported by other walkers in your area</li>
+      <li>Attribute reports and ratings to their authors</li>
+      <li>Send you push notifications when you have alerts enabled</li>
+      <li>Track your walks if you choose to use the walk feature</li>
+      <li>Improve the app's reliability and fix bugs</li>
+    </ul>
+    <p>
+      We do <strong>not</strong> use your data for advertising. We do
+      <strong>not</strong> sell your data to third parties. We do
+      <strong>not</strong> use your location history to build a profile
+      of you.
+    </p>
+
+    <h2>Third-party services</h2>
+    <p>
+      Paw Watch relies on the following third-party services to operate.
+      Each has its own privacy policy:
+    </p>
+    <dl>
+      <dt>Supabase (backend)</dt>
+      <dd>
+        Stores your account, profile, reports, walk history, and
+        notification tokens. Supabase's privacy policy:
+        <a href="https://supabase.com/privacy" rel="noopener noreferrer">supabase.com/privacy</a>.
+      </dd>
+      <dt>Google Maps</dt>
+      <dd>
+        Shows the map view and converts addresses to coordinates.
+        Google's privacy policy:
+        <a href="https://policies.google.com/privacy" rel="noopener noreferrer">policies.google.com/privacy</a>.
+      </dd>
+      <dt>Apple (Sign in with Apple, Push)</dt>
+      <dd>
+        Handles authentication and push delivery on iOS. Apple's
+        privacy policy:
+        <a href="https://www.apple.com/legal/privacy/" rel="noopener noreferrer">apple.com/legal/privacy</a>.
+      </dd>
+      <dt>Google (Sign in with Google)</dt>
+      <dd>
+        Handles authentication when you choose to sign in with
+        Google. Google's privacy policy:
+        <a href="https://policies.google.com/privacy" rel="noopener noreferrer">policies.google.com/privacy</a>.
+      </dd>
+      <dt>Expo (push notifications)</dt>
+      <dd>
+        Routes push notifications from our backend to Apple/Google.
+        Expo's privacy policy:
+        <a href="https://expo.dev/privacy" rel="noopener noreferrer">expo.dev/privacy</a>.
+      </dd>
+    </dl>
+
+    <h2>Children's privacy</h2>
+    <p>
+      Paw Watch is not intended for children under 13. We do not
+      knowingly collect information from children under 13. If you
+      believe a child under 13 has created an account, please contact
+      us and we will delete it.
+    </p>
+
+    <h2>Your rights</h2>
+
+    <h3>Access, correction, and deletion</h3>
+    <p>
+      You can:
+    </p>
+    <ul>
+      <li>
+        <strong>Update your profile</strong> (name, home location,
+        alert radius) at any time in the Profile tab.
+      </li>
+      <li>
+        <strong>Delete your reports</strong> by tapping a report you
+        submitted and selecting "Delete."
+      </li>
+      <li>
+        <strong>Delete your account</strong> by contacting us at
+        <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>.
+        We will delete your profile, reports, walks, and notification
+        tokens within 30 days.
+      </li>
+      <li>
+        <strong>Export your data</strong> by contacting us at
+        <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>.
+        We'll send you a JSON archive of your account within 30 days.
+      </li>
+    </ul>
+
+    <h3>California residents (CCPA / CPRA)</h3>
+    <p>
+      California residents have the right to know what personal
+      information we collect, to delete it, and to opt out of any
+      "sale" or "sharing." We do not sell or share personal information
+      for cross-context behavioral advertising. To exercise your
+      rights, contact
+      <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>.
+    </p>
+
+    <h3>European Union and United Kingdom (GDPR)</h3>
+    <p>
+      If you are in the EU or UK, our legal basis for processing your
+      data is your consent (location, notifications) and the
+      performance of our service (account, reports). You have the
+      right to access, correct, delete, restrict, or port your data,
+      and to lodge a complaint with your local data protection
+      authority. To exercise your rights, contact
+      <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>.
+    </p>
+
+    <h2>Data retention</h2>
+    <ul>
+      <li>
+        <strong>Active reports:</strong> 24 hours (low severity),
+        72 hours (medium), or 7 days (high), then auto-expired.
+      </li>
+      <li>
+        <strong>Walk history:</strong> retained on your account until
+        you delete it or delete your account.
+      </li>
+      <li>
+        <strong>Account profile:</strong> retained until you delete
+        your account.
+      </li>
+      <li>
+        <strong>Push notification tokens:</strong> deleted when you
+        sign out or delete your account.
+      </li>
+    </ul>
+
+    <h2>Security</h2>
+    <p>
+      We use TLS for all data in transit. Data at rest is stored in
+      Supabase's encrypted Postgres database. We follow industry
+      practices for secrets management and access control. That said,
+      no system is perfectly secure — if you believe your account has
+      been compromised, contact us immediately.
+    </p>
+
+    <h2>Changes to this policy</h2>
+    <p>
+      If we change this policy in a material way, we'll notify you
+      through the app and update the "last updated" date above. If the
+      changes are significant (e.g., a new category of data
+      collection), we'll ask for your consent again.
+    </p>
+
+    <h2>Contact</h2>
+    <p>
+      Paw Watch is published by Cerminara Consulting LLC.
+    </p>
+    <dl class="contact">
+      <dt>Email</dt>
+      <dd><a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a></dd>
+      <dt>Mailing address</dt>
+      <dd>
+        Cerminara Consulting LLC<br />
+        Attn: Paw Watch Privacy<br />
+        Richmond, VA 23220<br />
+        United States
+      </dd>
+    </dl>
+  </section>
+</Layout>

@@ -1,0 +1,139 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout
+  title="Support — Paw Watch"
+  description="Get help with Paw Watch. Contact us, read FAQs, and find resources."
+>
+  <section class="wrap-narrow prose">
+    <h1>Support</h1>
+    <p class="lede">
+      Most questions are answered below. If you're stuck, email us and
+      we'll get back to you within two business days.
+    </p>
+
+    <div class="card contact-card">
+      <h2>Contact</h2>
+      <dl class="contact">
+        <dt>Email</dt>
+        <dd><a href="mailto:support@paw-watch.app">support@paw-watch.app</a></dd>
+        <dt>Response time</dt>
+        <dd>Within 2 business days</dd>
+        <dt>Privacy questions</dt>
+        <dd><a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a></dd>
+      </dl>
+    </div>
+
+    <h2>Common questions</h2>
+
+    <div class="card">
+      <h3>How do I delete my account?</h3>
+      <p>
+        Email <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>
+        from the address you signed up with and we'll delete your
+        account, reports, walks, and notification tokens within 30 days.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>How do I report a hazard?</h3>
+      <p>
+        Open Paw Watch, tap the red <strong>+ Report</strong> button at
+        the bottom of the map, pick a category, set the severity, and
+        add a short description. Most reports take under 30 seconds.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Why aren't I getting push notifications?</h3>
+      <p>
+        Three things to check:
+      </p>
+      <ul>
+        <li>
+          You granted notification permission to Paw Watch (iOS Settings
+          → Paw Watch → Notifications).
+        </li>
+        <li>
+          Your home radius is set and your alert categories are enabled
+          (Profile tab → Alerts).
+        </li>
+        <li>
+          You have a working internet connection. Try opening the map
+          to confirm.
+        </li>
+      </ul>
+      <p>
+        Still stuck? Email
+        <a href="mailto:support@paw-watch.app">support@paw-watch.app</a>
+        and we'll help you debug.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Why is my report missing from the map?</h3>
+      <p>
+        Reports auto-expire based on severity: low (24h), medium (72h),
+        high (7d). If your report is older than that, it's no longer
+        shown. If you just submitted it and don't see it, try pulling
+        down to refresh the map.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Can I use Paw Watch without sharing my location?</h3>
+      <p>
+        You can browse the map and read reports without granting
+        location. You'll need to grant location to submit reports and
+        to receive alerts. To turn off location later, go to iOS
+        Settings → Paw Watch → Location.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>Why was my report downgraded or hidden?</h3>
+      <p>
+        If multiple walkers report the same hazard as no longer
+        present, or if multiple walkers disagree with the report,
+        Paw Watch will auto-deactivate it. We surface the dispute
+        count on the report's detail page so you can see the
+        breakdown.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>How do I invite a walker to walk my dog?</h3>
+      <p>
+        Open the Profile tab, tap "Invites," and tap "Send invite."
+        They'll get a 6-character code (also available as a QR code)
+        that they can enter when they sign up. Your roles will update
+        automatically when they accept.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>App version</h3>
+      <p>
+        Paw Watch 1.0 (build 1). Built with Expo and React Native.
+      </p>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .lede {
+    font-size: 1.125rem;
+    color: var(--ink-soft);
+    margin-bottom: 2em;
+  }
+  .contact-card {
+    background: linear-gradient(180deg, #fef7f1 0%, #ffffff 100%);
+  }
+  .card h3 {
+    margin-top: 0;
+  }
+  .card ul {
+    margin-bottom: 1em;
+  }
+</style>
