@@ -1,0 +1,287 @@
+---
+import Layout from "../layouts/Layout.astro";
+import PhoneMockup from "../components/PhoneMockup.astro";
+---
+
+<Layout
+  title="Paw Watch — Walk safe. Walk local."
+  description="Paw Watch is community-powered safety for dog walkers. See hazards on a neighborhood map, log walks with route history, and get alerts when new reports appear near your home."
+>
+  <section class="hero wrap">
+    <div class="hero-copy">
+      <p class="eyebrow">Paw Watch for iPhone</p>
+      <h1>Walk safe. Walk local.</h1>
+      <p class="lede">
+        Paw Watch is community-powered safety for dog walkers. See hazards
+        on a neighborhood map, log your walks with route history, and get
+        a quiet alert when a new report appears near your home.
+      </p>
+      <div class="cta-row">
+        <a class="badge badge-app-store" href="#" aria-label="Download on the App Store (coming soon)">
+          <span class="badge-line-1">Download on the</span>
+          <span class="badge-line-2">App Store</span>
+        </a>
+        <p class="cta-note">Launching late August 2026</p>
+      </div>
+      <p class="microcopy">
+        Built by Cerminara Consulting LLC. Free, no ads, no tracking, no
+        account required to browse the map.
+      </p>
+    </div>
+    <div class="hero-visual" aria-hidden="true">
+      <PhoneMockup />
+    </div>
+  </section>
+
+  <section class="features wrap">
+    <h2 class="features-title">What's in Paw Watch</h2>
+    <ul class="feature-grid">
+      <li>
+        <h3>Neighborhood hazard map</h3>
+        <p>
+          Color-coded pins for loose dogs, broken glass, aggressive
+          animals, and five more categories. Auto-expire after the danger
+          has passed — the map only shows what's still relevant.
+        </p>
+      </li>
+      <li>
+        <h3>Walk tracking</h3>
+        <p>
+          Start a walk, watch the route draw itself, see distance and
+          duration when you're done. History is saved so you can revisit
+          your favorite routes.
+        </p>
+      </li>
+      <li>
+        <h3>Home-radius alerts</h3>
+        <p>
+          Set your home once. When a new hazard appears within your
+          radius, Paw Watch sends a quiet push — so you know before you
+          clip the leash.
+        </p>
+      </li>
+    </ul>
+  </section>
+
+  <section class="trust wrap">
+    <h2 class="trust-title">Privacy by default</h2>
+    <ul class="trust-list">
+      <li>
+        <strong>Location stays local.</strong> Your home radius is the
+        only location we store. Report coordinates are stored, but your
+        address is not.
+      </li>
+      <li>
+        <strong>No ads, no trackers, no analytics resale.</strong>
+        Paw Watch is published by a small consulting firm, not an ad
+        network.
+      </li>
+      <li>
+        <strong>Delete your account in-app.</strong> One tap in Profile,
+        your data is gone — profile, reports, walks, notification tokens.
+      </li>
+    </ul>
+    <p class="trust-links">
+      Read the full <a href="/privacy-policy/">privacy policy</a> or
+      <a href="/support/">get support</a>.
+    </p>
+  </section>
+</Layout>
+
+<style>
+  /* Hero */
+  .hero {
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 64px;
+    align-items: center;
+    padding: 64px 32px 48px;
+  }
+  .hero-copy {
+    max-width: 560px;
+  }
+  .eyebrow {
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin: 0 0 16px;
+  }
+  .hero h1 {
+    font-size: 3.25rem;
+    line-height: 1.05;
+    margin: 0 0 20px;
+    color: var(--navy);
+  }
+  .lede {
+    font-size: 1.2rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    margin: 0 0 32px;
+    max-width: 540px;
+  }
+  .cta-row {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .badge {
+    display: inline-flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    background: var(--ink);
+    color: var(--cream);
+    text-decoration: none;
+    border-radius: 8px;
+    padding: 10px 22px;
+    min-width: 180px;
+    line-height: 1.15;
+    transition: opacity 0.15s ease;
+  }
+  .badge:hover {
+    opacity: 0.85;
+    text-decoration: none;
+  }
+  .badge-line-1 {
+    font-size: 0.7rem;
+    letter-spacing: 0.02em;
+    opacity: 0.85;
+  }
+  .badge-line-2 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    font-family: var(--font-display);
+    letter-spacing: -0.01em;
+  }
+  .cta-note {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  .microcopy {
+    font-size: 0.85rem;
+    color: var(--ink-soft);
+    margin: 0;
+    max-width: 480px;
+  }
+  .hero-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .hero-visual :global(.phone-mockup) {
+    width: 240px;
+    height: auto;
+    filter: drop-shadow(0 20px 40px rgba(24, 61, 98, 0.15));
+  }
+
+  /* Features */
+  .features {
+    padding: 48px 32px 32px;
+  }
+  .features-title {
+    text-align: center;
+    margin: 0 0 40px;
+    font-size: 1.85rem;
+  }
+  .feature-grid {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+  }
+  .feature-grid li {
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 12px;
+    padding: 28px 24px;
+  }
+  .feature-grid h3 {
+    margin: 0 0 12px;
+    font-size: 1.2rem;
+  }
+  .feature-grid p {
+    margin: 0;
+    color: var(--ink-soft);
+    font-size: 0.95rem;
+    line-height: 1.55;
+  }
+
+  /* Trust strip */
+  .trust {
+    padding: 48px 32px 32px;
+    max-width: 880px;
+  }
+  .trust-title {
+    text-align: center;
+    margin: 0 0 32px;
+    font-size: 1.85rem;
+  }
+  .trust-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 24px;
+    display: grid;
+    gap: 16px;
+  }
+  .trust-list li {
+    padding: 20px 24px;
+    background: white;
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    color: var(--ink-soft);
+    line-height: 1.55;
+  }
+  .trust-list strong {
+    color: var(--navy);
+    font-weight: 600;
+  }
+  .trust-links {
+    text-align: center;
+    color: var(--ink-soft);
+    margin: 0;
+  }
+
+  /* Responsive */
+  @media (max-width: 880px) {
+    .hero {
+      grid-template-columns: 1fr;
+      gap: 40px;
+      padding: 40px 24px 32px;
+      text-align: center;
+    }
+    .hero-copy {
+      max-width: none;
+      margin: 0 auto;
+    }
+    .hero h1 {
+      font-size: 2.5rem;
+    }
+    .lede {
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .cta-row {
+      align-items: center;
+    }
+    .hero-visual :global(.phone-mockup) {
+      width: 200px;
+    }
+    .feature-grid {
+      grid-template-columns: 1fr;
+      gap: 16px;
+    }
+    .features,
+    .trust {
+      padding-left: 24px;
+      padding-right: 24px;
+    }
+  }
+</style>
