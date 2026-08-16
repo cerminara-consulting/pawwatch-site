@@ -1,5 +1,11 @@
 #!/usr/bin/env python3
-"""Regenerate pawwatch-site og-image.png \u2014 PIL + Fraunces (variable, set axis weight)."""
+"""Regenerate pawwatch-site og-image.png — PIL + Fraunces (variable, set axis weight).
+
+Positioning note: Paw Watch is a neighborhood hazard map + walk tracker for dog
+walkers, NOT a lost-and-found pet service. Copy here mirrors the live site hero
+on src/pages/home.astro ("Walk safe. Walk local.") and avoids anything that
+implies we help reunite lost pets with owners.
+"""
 from PIL import Image, ImageDraw, ImageFont
 import os, sys
 
@@ -17,7 +23,7 @@ FONT_DIR = r"C:\Users\jmcer\AppData\Local\Temp\fonts"
 FRAUNCES_VAR    = os.path.join(FONT_DIR, "Fraunces[SOFT,WONK,opsz,wght].ttf")
 FRAUNCES_ITALIC = os.path.join(FONT_DIR, "Fraunces-Italic[SOFT,WONK,opsz,wght].ttf")
 
-# Variable font \u2014 set weight axis
+# Variable font — set weight axis
 def font_600(path, size):
     f = ImageFont.truetype(path, size)
     try:
@@ -49,13 +55,16 @@ d = ImageDraw.Draw(img)
 # Top decorative rule across full width
 d.rectangle([(0, 0), (W, 12)], fill=NAVY)
 
-# Eyebrow (top, italic small caps)
+# Eyebrow (top, italic small caps) — matches the live site's hero eyebrow
 f_eyebrow = font_reg_italic(FRAUNCES_ITALIC, 22)
-d.text((80, 50), "PAW WATCH \u00b7 NEIGHBORHOOD PET SAFETY", font=f_eyebrow, fill=TEAL)
+d.text((80, 50), "PAW WATCH \u00b7 NEIGHBORHOOD WALK SAFETY", font=f_eyebrow, fill=TEAL)
 
-# H1 \u2014 measure first, then wrap to fit. Aim for max \u2248880px wide.
+# H1 — three-beat: two real hazard categories + the tagline.
+# Mirrors the previous "Lost pet? / Found pet? / Lost & found." rhythm so the
+# visual cadence stays identical, but the words now describe what the app
+# actually does. Categories copied verbatim from the home.astro feature copy.
 f_h1 = font_600(FRAUNCES_VAR, 78)
-h1_lines = ["Lost pet?", "Found pet?", "Lost & found."]  # playful three-beat
+h1_lines = ["Loose dog?", "Broken glass?", "Walk safe."]
 y = 130
 for line in h1_lines:
     bbox = d.textbbox((0, 0), line, font=f_h1)
@@ -64,22 +73,22 @@ for line in h1_lines:
     d.text((80, y), line, font=f_h1, fill=INK)
     y += 90  # ~1.15x font size for line height
 
-# Subhead (italic, muted)
+# Subhead (italic, muted) — describes the product accurately. Echoes the
+# hero lede on home.astro without copying it word-for-word.
 f_sub = font_reg_italic(FRAUNCES_ITALIC, 32)
 sub_y = y + 12
-d.text((80, sub_y), "PawWatch crowdsources sightings in your neighborhood", font=f_sub, fill=INK_SOFT)
-d.text((80, sub_y + 48), "so a lost pet gets home faster.", font=f_sub, fill=INK_SOFT)
+d.text((80, sub_y), "See hazards near home, get a quiet alert before", font=f_sub, fill=INK_SOFT)
+d.text((80, sub_y + 48), "you clip the leash.", font=f_sub, fill=INK_SOFT)
 
 # URL footer (italic, navy)
 f_url = font_600(FRAUNCES_VAR, 26)
 d.text((80, sub_y + 48 + 52), "PAW-WATCH.APP", font=f_url, fill=NAVY)
 
-# Brand mark (top-right) \u2014 navy rounded square + cream paw print
+# Brand mark (top-right) — navy rounded square + cream PW wordmark
 mark_size, mark_radius = 130, 28
 mx, my = W - 80 - mark_size, 50
 d.rounded_rectangle((mx, my, mx + mark_size, my + mark_size),
                     radius=mark_radius, fill=NAVY)
-# paw emoji won't render in PIL on bare windows. Use a simple "PW" wordmark:
 f_pw = font_600(FRAUNCES_VAR, 56)
 bbox = d.textbbox((0, 0), "PW", font=f_pw)
 pw_w, pw_h = bbox[2] - bbox[0], bbox[3] - bbox[1]
@@ -90,7 +99,7 @@ d.text((mx + (mark_size - pw_w) // 2 - bbox[0],
 # Bottom rule (mirror top)
 d.rectangle([(0, H - 12), (W, H)], fill=NAVY)
 
-# --- save (script-relative path \u2014 see skill pitfall #2) ---
+# --- save (script-relative path — see skill pitfall #2) --
 out = os.path.join(os.path.dirname(__file__), "..", "public", "og-image.png")
 out = os.path.normpath(out)
 os.makedirs(os.path.dirname(out), exist_ok=True)
