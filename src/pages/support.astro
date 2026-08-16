@@ -30,9 +30,17 @@ import Layout from "../layouts/Layout.astro";
     <div class="card">
       <h3>How do I delete my account?</h3>
       <p>
-        Email <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>
+        Open the Profile tab, tap <strong>Account</strong>, scroll to
+        the bottom, and tap <strong>Delete account</strong>. You'll be
+        asked to type the word "delete" to confirm. Your profile,
+        reports, walks, pets, alert history, and notification tokens
+        are removed immediately — there's no 30-day waiting period.
+      </p>
+      <p>
+        If you no longer have access to the app, email
+        <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>
         from the address you signed up with and we'll delete your
-        account, reports, walks, and notification tokens within 30 days.
+        account within 30 days.
       </p>
     </div>
 
@@ -74,10 +82,10 @@ import Layout from "../layouts/Layout.astro";
     <div class="card">
       <h3>Why is my report missing from the map?</h3>
       <p>
-        Reports auto-expire based on severity: low (24h), medium (72h),
-        high (7d). If your report is older than that, it's no longer
-        shown. If you just submitted it and don't see it, try pulling
-        down to refresh the map.
+        Reports expire based on severity: low (24h), medium (72h),
+        high (7d). After that, the row is deleted from our database —
+        not just hidden. If you just submitted it and don't see it,
+        try pulling down to refresh the map.
       </p>
     </div>
 
@@ -99,6 +107,30 @@ import Layout from "../layouts/Layout.astro";
         Paw Watch will auto-deactivate it. We surface the dispute
         count on the report's detail page so you can see the
         breakdown.
+      </p>
+    </div>
+
+    <div class="card">
+      <h3>How do I flag a report or block a user?</h3>
+      <p>
+        Open any hazard report and tap <strong>Report this content</strong>
+        at the bottom. You can choose a category (harassment, hate
+        speech, off-topic, impersonation, or other) and add an optional
+        note. Flagged reports are reviewed by a moderator within 24 hours.
+      </p>
+      <p>
+        To block a walker entirely, open any of their reports and tap
+        <strong>Block this user</strong> at the bottom. You'll be asked
+        to type the word "block" to confirm. Their reports will no
+        longer appear on your map, and you can unblock from
+        <strong>Profile → Blocked users</strong> at any time.
+      </p>
+      <p>
+        We use an automated moderation service to scan new reports
+        before they appear on the map, and a 24-hour SLA guarantees
+        that flagged reports are removed within one day. The full
+        operational runbook is published at
+        <a href="https://github.com/cerminaraconsulting/pawwatch/blob/main/docs/ugc-moderation-runbook.md" rel="noopener noreferrer">github.com/cerminaraconsulting/pawwatch/docs/ugc-moderation-runbook.md</a>.
       </p>
     </div>
 

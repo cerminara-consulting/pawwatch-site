@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
-const lastUpdated = "2026-07-30";
+const lastUpdated = "2026-08-14";
 ---
 
 <Layout
@@ -53,10 +53,12 @@ const lastUpdated = "2026-07-30";
       </li>
       <li>
         <strong>Track walks.</strong> If you start a walk, we record
-        GPS points at regular intervals so you can review the route and
-        distance afterward. You can end a walk at any time; the data
-        stays on your device and only the start/end timestamps are
-        saved to your account if you sign in.
+        GPS points at regular intervals so you can review the route
+        and distance afterward. Walks are stored in our database
+        while your account is active, are visible only to you, and
+        are deleted within 30 days of your account being deleted.
+        You can end a walk at any time, and you can delete an
+        individual walk from the Profile tab.
       </li>
       <li>
         <strong>Send you alerts.</strong> If you've set a home radius,
@@ -95,7 +97,7 @@ const lastUpdated = "2026-07-30";
     <h2>What we don't collect</h2>
     <ul>
       <li>Your contacts list</li>
-      <li>Your photos or camera (beyond what you explicitly upload)</li>
+      <li>Your photos or camera (v1.0 does not access either)</li>
       <li>Your advertising identifier (IDFA)</li>
       <li>Your purchase history</li>
       <li>Your browsing history outside the app</li>
@@ -158,6 +160,54 @@ const lastUpdated = "2026-07-30";
       </dd>
     </dl>
 
+    <h2>User-generated content and moderation</h2>
+    <p>
+      Hazard reports are user-generated content. To keep the map a
+      safe and useful place to walk, Paw Watch provides:
+    </p>
+    <ul>
+      <li>
+        <strong>Flag any report as offensive.</strong> Open any report
+        and tap "Report this content." Choose a category (harassment,
+        hate speech, off-topic, impersonation, or other) and add an
+        optional note. Flagged reports are reviewed by a moderator
+        within 24 hours.
+      </li>
+      <li>
+        <strong>Block another user.</strong> Open any report and tap
+        "Block this user" at the bottom. You will not see that user's
+        reports on the map or in any feed. You can unblock from
+        Profile → Blocked users at any time.
+      </li>
+      <li>
+        <strong>Automated moderation on submission.</strong> Before a
+        new report is shown to anyone, its text is checked by an
+        automated moderation service. The service receives only the
+        report text — never your location, account, or device
+        information. Reports flagged by the service are hidden from
+        public view until a moderator reviews them.
+      </li>
+    </ul>
+    <p>
+      If a report you submit is removed after review, you can appeal
+      the decision by emailing
+      <a href="mailto:support@paw-watch.app">support@paw-watch.app</a>.
+      We will respond within five business days.
+    </p>
+    <p>
+      The full operational runbook — including how the automated
+      moderation works, the 24-hour takedown SLA, and the appeal
+      process — is published at
+      <a href="https://github.com/cerminaraconsulting/pawwatch/blob/main/docs/ugc-moderation-runbook.md" rel="noopener noreferrer">github.com/cerminaraconsulting/pawwatch/docs/ugc-moderation-runbook.md</a>.
+      We make this public so the moderation behavior is auditable.
+    </p>
+    <p>
+      We do not use your reports, your reading history, or any other
+      user-generated content to train AI models or to build advertising
+      profiles. Paw Watch is published by a small independent
+      consulting practice, not an ad network.
+    </p>
+
     <h2>Children's privacy</h2>
     <p>
       Paw Watch is not intended for children under 13. We do not
@@ -182,10 +232,15 @@ const lastUpdated = "2026-07-30";
         submitted and selecting "Delete."
       </li>
       <li>
-        <strong>Delete your account</strong> by contacting us at
-        <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>.
-        We will delete your profile, reports, walks, and notification
-        tokens within 30 days.
+        <strong>Delete your account</strong> from inside the app at any
+        time: open the Profile tab, tap <strong>Account</strong>, then
+        tap <strong>Delete account</strong> at the bottom. You'll be
+        asked to type the word "delete" to confirm. Your profile,
+        reports, walks, pets, alert history, and notification tokens
+        are removed immediately. If you no longer have access to the
+        app, you can also email
+        <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>
+        and we will delete your account within 30 days.
       </li>
       <li>
         <strong>Export your data</strong> by contacting us at
@@ -196,23 +251,28 @@ const lastUpdated = "2026-07-30";
 
     <h3>California residents (CCPA / CPRA)</h3>
     <p>
-      California residents have the right to know what personal
-      information we collect, to delete it, and to opt out of any
-      "sale" or "sharing." We do not sell or share personal information
-      for cross-context behavioral advertising. To exercise your
-      rights, contact
+      We honor the rights granted by the California Consumer Privacy
+      Act (CCPA / CPRA) — to know what personal information we
+      collect, to delete it, to correct it, and to limit the use of
+      any sensitive personal information — for every user regardless
+      of residency. We do not sell or share personal information for
+      cross-context behavioral advertising. To exercise these rights,
+      contact
       <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>.
     </p>
 
     <h3>European Union and United Kingdom (GDPR)</h3>
     <p>
-      If you are in the EU or UK, our legal basis for processing your
-      data is your consent (location, notifications) and the
-      performance of our service (account, reports). You have the
-      right to access, correct, delete, restrict, or port your data,
-      and to lodge a complaint with your local data protection
-      authority. To exercise your rights, contact
-      <a href="mailto:privacy@paw-watch.app">privacy@paw-watch.app</a>.
+      Paw Watch is not currently available to residents of the
+      European Union, the United Kingdom, or other jurisdictions
+      outside the United States. If you are in one of those
+      jurisdictions, please do not create an account. The Apple App
+      Store availability setting on this app is "United States only,"
+      and the Terms of Service require U.S. residency. Should we
+      expand availability to additional jurisdictions in the future,
+      this section will be updated with the applicable privacy-law
+      disclosures (including, where required, a named EU Article 27
+      representative and an international-data-transfer mechanism).
     </p>
 
     <h2>Data retention</h2>
@@ -263,7 +323,9 @@ const lastUpdated = "2026-07-30";
       <dd>
         Cerminara Consulting LLC<br />
         Attn: Paw Watch Privacy<br />
-        Richmond, VA 23220<br />
+        c/o Northwest Registered Agent LLC<br />
+        8401 Mayland Dr, #S<br />
+        Henrico, VA 23294<br />
         United States
       </dd>
     </dl>
