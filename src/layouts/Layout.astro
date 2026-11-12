@@ -71,6 +71,9 @@ const path = Astro.url.pathname;
           <a href="/support/">Support</a>
         </p>
       </div>
+      <div class="wrap footer-address">
+        <p>Cerminara Consulting, PO Box 23, Studley, VA 23162</p>
+      </div>
     </footer>
   </body>
 </html>
@@ -214,6 +217,23 @@ const path = Astro.url.pathname;
   }
   .footer-row .links a:hover {
     color: var(--navy);
+  }
+
+  /*
+   * The mailing address, on every page.
+   *
+   * It used to live only in the privacy policy's contact block, so a
+   * reader who wanted to write to the company had to go and read the
+   * privacy policy to find out where the company is. A mailing
+   * address is not a privacy disclosure. It belongs in the footer.
+   */
+  .footer-address {
+    margin-top: 10px;
+  }
+  .footer-address p {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
   }
 
   /* Typography */
