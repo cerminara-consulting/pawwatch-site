@@ -81,19 +81,19 @@ We do not use your data for advertising. We do not sell your data to third parti
 
 PawWatch relies on the following third-party services to operate. Each has its own privacy policy:
 
-**Supabase (hosting, database, and sign-in)**
+**Supabase (hosting, database, and sign-in)**  
 Hosts our database and server code and handles sign-in. It stores your account, profile, photos, pets, reports, ratings, walk history, invites, and notification tokens. Supabase also keeps standard request and server logs, such as IP address, time, and the address of each request, for about 7 days, then deletes them. Because the map asks for the reports in the area on screen, request logs can include the map area being loaded. Supabase's sign-in service logs each sign-up and sign-in, including your email address, in its logs, which are deleted after about 7 days. Supabase's privacy policy: [supabase.com/privacy](https://supabase.com/privacy).
 
-**Apple (Sign in with Apple, Maps lookups, and push)**
+**Apple (Sign in with Apple, Maps lookups, and push)**  
 Handles sign-in when you choose Sign in with Apple, delivers push notifications on iOS, and provides the maps. When you verify your neighborhood, the address you type (or your current location) is sent to Apple Maps to look up the area; maps you view are loaded from Apple. A push notification's text passes through Apple to reach your phone: the hazard type, its distance from your home, and, only once the report has passed review, the start of its description. If you delete an account created with Sign in with Apple, we ask Apple to revoke PawWatch's access to your Apple account. If you choose Delete without Apple instead, we don't contact Apple, and you can remove PawWatch yourself in iOS Settings (your name, Sign-In & Security, Sign in with Apple). Apple's privacy policy: [apple.com/legal/privacy](https://www.apple.com/legal/privacy/).
 
-**OpenAI (moderation of report text)**
+**OpenAI (moderation of report text)**  
 Checks the title and description of each new report before anyone else sees it. OpenAI receives only the report text: never your name, email, location, account, or device information. OpenAI's API data policies apply to that text. OpenAI's privacy policy: [openai.com/policies/privacy-policy](https://openai.com/policies/privacy-policy).
 
-**Resend (account emails)**
+**Resend (account emails)**  
 If you sign up with email, we send account emails, such as your sign-up confirmation, through Resend, which receives your email address and the message. Resend's privacy policy: [resend.com/legal/privacy-policy](https://resend.com/legal/privacy-policy).
 
-**People you choose to share with**
+**People you choose to share with**  
 When you tap Share on a walk card or a pet invite, the image or invite message goes to whoever you send it to, through the app you pick.
 
 Your device's location itself is handled by iOS on your phone. We do not use Google services, analytics tools, or advertising networks.
@@ -172,16 +172,16 @@ PawWatch is published by Cerminara Consulting LLC.
 
 Email: [privacy@paw-watch.app](mailto:privacy@paw-watch.app)
 
-**Registered agent (legal address of record)**
+**Registered agent (legal address of record)**  
 Cerminara Consulting LLC
-c/o Northwest Registered Agent LLC
-8401 Mayland Dr, Ste A
-Richmond, VA 23294
+c/o Northwest Registered Agent LLC  
+8401 Mayland Dr, Ste A  
+Richmond, VA 23294  
 United States
 
-**Mailing address**
-Cerminara Consulting LLC
-Attn: PawWatch Privacy
-PO Box 23
-Studley, VA 23162-9997
+**Mailing address**  
+Cerminara Consulting LLC  
+Attn: PawWatch Privacy  
+PO Box 23  
+Studley, VA 23162-9997  
 United States

@@ -111,11 +111,80 @@ def linkify_urls(md):
     return md
 
 
+# A line that ends a sentence. If a line ends with one of these, it is
+# the end of the sentence, not the start of a new row.
+SENTENCE_END = (".", "?", "!", ":", ";")
+
+
+def hard_break_rows(md):
+    """
+    Keep the rows of a multi-line block on separate lines.
+
+    Markdown treats a plain newline inside a paragraph as a soft break,
+    and renders it as a space. So a block written one row per line comes
+    out as one run-on line. The copy writes the mailing address that
+    way, so it would render as "Cerminara Consulting LLC Attn: PawWatch
+    PO Box 23 Studley, VA 23162-9997 United States" on one line, which
+    is worse than the page it replaces.
+
+    Two trailing spaces make a markdown hard break, and Astro renders
+    that as a <br>. So a row gets a hard break when the row after it
+    starts a new row rather than continuing the sentence.
+
+    A row continues a sentence when the next line starts with a lower
+    case letter or a continuation mark, which is what a paragraph of
+    prose that has been wrapped by hand looks like. The copy does not
+    wrap its prose, but this keeps the rule safe if it ever does.
+
+    List items and headings are left alone.
+    """
+    blocks = re.split(r"(\n\s*\n)", md)
+    out = []
+    for i, block in enumerate(blocks):
+        # Even indices are content, odd indices are the separators.
+        if i % 2 == 1 or not block.strip():
+            out.append(block)
+            continue
+
+        lines = block.split("\n")
+        if len(lines) < 2:
+            out.append(block)
+            continue
+
+        # Skip lists, headings, tables and code. A bold label such as
+        # "**Mailing address**" is not a list item: it starts with "**",
+        # not "* ", so it is not skipped.
+        first = lines[0].lstrip()
+        is_list = (re.match(r"^[-*+]\s", first)
+                   or re.match(r"^\d+\.\s", first))
+        if (is_list or first.startswith(("#", "|", "```", ">"))):
+            out.append(block)
+            continue
+
+        for idx in range(len(lines) - 1):
+            line = lines[idx]
+            nxt = lines[idx + 1].strip()
+            if not line.strip() or not nxt:
+                continue
+            stripped = line.rstrip()
+            # Already a hard break, or the end of a sentence.
+            if stripped.endswith("  ") or stripped.endswith(SENTENCE_END):
+                continue
+            # The next line continues the sentence.
+            if nxt[0].islower() or nxt[0] in ",;)]}\"'":
+                continue
+            lines[idx] = stripped + "  "
+
+        out.append("\n".join(lines))
+    return "".join(out)
+
+
 def process(md, date_str):
     out = strip_comments(md)
     out = set_publish_date(out, date_str)
     out = linkify_emails(out)
     out = linkify_urls(out)
+    out = hard_break_rows(out)
     # Collapse the blank lines the comment removal leaves behind, and
     # make sure the file ends with exactly one newline.
     out = re.sub(r"\n{3,}", "\n\n", out)

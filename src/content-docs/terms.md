@@ -75,8 +75,8 @@ Apple is not a party to these Terms and is not responsible for the app or its co
 
 Questions about these Terms: [support@paw-watch.app](mailto:support@paw-watch.app)
 
-Cerminara Consulting LLC
-Attn: PawWatch
-PO Box 23
-Studley, VA 23162-9997
+Cerminara Consulting LLC  
+Attn: PawWatch  
+PO Box 23  
+Studley, VA 23162-9997  
 United States
