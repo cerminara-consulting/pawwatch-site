@@ -35,6 +35,41 @@ failures = []
 notes = []
 
 
+def ocr_image(path):
+    """
+    Read the text out of the social share image.
+
+    The PNG carries no text of its own, so this is the only way to
+    check what it says. scripts/make_og.py writes a plain text manifest
+    next to the image listing every string it drew, and that is used
+    first because it is exact. OCR is the backstop, for the case where
+    the manifest is missing or the image was changed some other way.
+
+    Returns the text, or None if it could not be read at all.
+    """
+    manifest = os.path.join(os.path.dirname(path), "og-image.txt")
+    if os.path.exists(manifest):
+        with open(manifest, encoding="utf-8") as f:
+            return f.read()
+
+    try:
+        import pytesseract
+        from PIL import Image
+    except ImportError:
+        return None
+
+    # tesseract is not on PATH by default on Windows.
+    for candidate in (r"C:\Program Files\Tesseract-OCR\tesseract.exe",
+                      r"C:\Program Files (x86)\Tesseract-OCR\tesseract.exe"):
+        if os.path.exists(candidate):
+            pytesseract.pytesseract.tesseract_cmd = candidate
+            break
+    try:
+        return pytesseract.image_to_string(Image.open(path))
+    except Exception:
+        return None
+
+
 def fail(msg):
     failures.append(msg)
 
@@ -231,6 +266,26 @@ def main():
         else:
             fail("_redirects does not redirect /home/ to / with a 301")
             print("  FAIL /home/ redirect missing")
+
+    # The social share image. It is a PNG, so the page checks cannot see
+    # the text inside it. It is drawn by scripts/make_og.py, and a stale
+    # copy of that PNG keeps saying the old name even after every source
+    # file is fixed. OCR the image and check the text in it.
+    print("\n--- social share image ---")
+    og = os.path.join(DIST, "og-image.png")
+    if not os.path.exists(og):
+        fail("no og-image.png in the build")
+        print("  FAIL no og-image.png")
+    else:
+        text = ocr_image(og)
+        if text is None:
+            notes.append("could not OCR og-image.png, so its text was not checked")
+            print("  NOTE could not read the text in og-image.png")
+        elif "Paw Watch" in text or "PAW WATCH" in text:
+            fail(f"og-image.png still says the old name: {text!r}")
+            print(f"  FAIL og-image.png says 'Paw Watch': {text!r}")
+        else:
+            print(f"  PASS og-image.png text: {text!r}")
 
     print()
     print("=" * 70)

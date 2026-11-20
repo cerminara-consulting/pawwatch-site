@@ -1,10 +1,12 @@
 #!/usr/bin/env python3
 """Regenerate pawwatch-site og-image.png — PIL + Fraunces (variable, set axis weight).
 
-Positioning note: Paw Watch is a neighborhood hazard map + walk tracker for dog
+Positioning note: PawWatch is a neighborhood hazard map + walk tracker for dog
 walkers, NOT a lost-and-found pet service. Copy here mirrors the live site hero
-on src/pages/home.astro ("Walk safe. Walk local.") and avoids anything that
+on src/pages/index.astro ("Walk safe. Walk local.") and avoids anything that
 implies we help reunite lost pets with owners.
+
+The eyebrow says PAWWATCH as one word. The product name is PawWatch.
 """
 from PIL import Image, ImageDraw, ImageFont
 import os, sys
@@ -57,7 +59,7 @@ d.rectangle([(0, 0), (W, 12)], fill=NAVY)
 
 # Eyebrow (top, italic small caps) — matches the live site's hero eyebrow
 f_eyebrow = font_reg_italic(FRAUNCES_ITALIC, 22)
-d.text((80, 50), "PAW WATCH \u00b7 NEIGHBORHOOD WALK SAFETY", font=f_eyebrow, fill=TEAL)
+d.text((80, 50), "PAWWATCH · NEIGHBORHOOD WALK SAFETY", font=f_eyebrow, fill=TEAL)
 
 # H1 — three-beat: two real hazard categories + the tagline.
 # Mirrors the previous "Lost pet? / Found pet? / Lost & found." rhythm so the
@@ -99,9 +101,26 @@ d.text((mx + (mark_size - pw_w) // 2 - bbox[0],
 # Bottom rule (mirror top)
 d.rectangle([(0, H - 12), (W, H)], fill=NAVY)
 
-# --- save (script-relative path — see skill pitfall #2) --
+# --- save (script-relative path — see skill pitfall #2) ---
 out = os.path.join(os.path.dirname(__file__), "..", "public", "og-image.png")
 out = os.path.normpath(out)
 os.makedirs(os.path.dirname(out), exist_ok=True)
 img.convert("RGB").save(out, "PNG", optimize=True)
 print(f"\nwrote {out}  ({os.path.getsize(out)} bytes)")
+
+# --- record the text drawn, so a checker can read it without OCR ---
+# The PNG itself carries no text, so without this file a stale image keeps
+# saying the old name even after every source file has been fixed.
+manifest = os.path.normpath(
+    os.path.join(os.path.dirname(__file__), "..", "public", "og-image.txt"))
+texts = [
+    "PAWWATCH · NEIGHBORHOOD WALK SAFETY",
+    *h1_lines,
+    "See hazards near home, get a quiet alert before",
+    "you clip the leash.",
+    "PAW-WATCH.APP",
+    "PW",
+]
+with open(manifest, "w", encoding="utf-8", newline="\n") as f:
+    f.write("\n".join(texts) + "\n")
+print(f"wrote {manifest}")
