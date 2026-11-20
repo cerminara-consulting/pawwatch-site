@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Regenerate Paw Watch site favicon assets from the master logo PNG.
+"""Regenerate PawWatch site favicon assets from the master logo PNG.
 
 Source: C:\\Users\\jmcer\\pawwatch\\assets\\images\\logo-new.png
        (1024x1024 RGBA, navy/teal pin-paw-dog mark on transparent,
