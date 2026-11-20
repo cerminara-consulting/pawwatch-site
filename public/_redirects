@@ -1,0 +1,12 @@
+# Cloudflare Pages redirects for the PawWatch site.
+#
+# /home/ used to be the home page. The home page is at / now, so
+# /home/ sends visitors there permanently. Anything still pointing at
+# the old address (an old bookmark, a link in an app store listing, a
+# search result) should land on the home page rather than at a 404.
+#
+# The site is built with Astro's directory format, so the home page is
+# served at / and /home/ needs to redirect rather than be a page of
+# its own.
+
+/home/    /    301
