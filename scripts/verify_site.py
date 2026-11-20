@@ -7,14 +7,17 @@ Checks every built page for:
   2. No reference to any host other than the site itself. That means no
      fonts.googleapis.com, no fonts.gstatic.com, no analytics, no
      third-party script, no external image.
-  3. No "Paw Watch" anywhere, except in the privacy policy and support
-     body text, which John is rewriting separately.
+  3. No "Paw Watch" anywhere.
+  4. The privacy policy, terms and support pages say exactly what the
+     copy in src/content-docs/ says, word for word. That check lives in
+     scripts/verify_docs.py, which this script runs at the end.
 
 Usage:
     python scripts/verify_site.py [dist-directory]
 """
 import os
 import re
+import subprocess
 import sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -26,10 +29,10 @@ DIST = os.path.abspath(sys.argv[1]) if len(sys.argv) > 1 else os.path.join(SITE,
 # Both are the site itself.
 OWN_HOSTS = ("paw-watch.app", "www.paw-watch.app", "pawwatch-site.pages.dev")
 
-# Pages whose BODY text John is rewriting separately. Their titles and
-# shared chrome still have to be correct, so only the body text is
-# exempt from the "Paw Watch" check.
-BODY_EXEMPT = ("privacy-policy", "support")
+# No page is exempt from the "Paw Watch" check any more. The privacy
+# policy and support pages used to be, because John was rewriting their
+# body text separately. That copy has landed, and it says "PawWatch".
+BODY_EXEMPT = ()
 
 failures = []
 notes = []
@@ -289,6 +292,20 @@ def main():
 
     print()
     print("=" * 70)
+
+    # The page copy check. Run as a separate script so it can be run on
+    # its own, but it belongs with the rest of the checks.
+    print("--- page copy against src/content-docs/ ---")
+    docs_check = subprocess.run(
+        [sys.executable, os.path.join(HERE, "verify_docs.py"), DIST],
+        capture_output=True, text=True)
+    print(docs_check.stdout.rstrip())
+    if docs_check.returncode != 0:
+        fail("the pages do not match the source copy")
+        if docs_check.stderr.strip():
+            print(docs_check.stderr.rstrip())
+
+    print()
     if notes:
         print(f"{len(notes)} note(s):")
         for n in notes:
