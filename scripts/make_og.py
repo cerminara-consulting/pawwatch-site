@@ -79,7 +79,7 @@ for line in h1_lines:
 # hero lede on home.astro without copying it word-for-word.
 f_sub = font_reg_italic(FRAUNCES_ITALIC, 32)
 sub_y = y + 12
-d.text((80, sub_y), "See hazards near home, get a quiet alert before", font=f_sub, fill=INK_SOFT)
+d.text((80, sub_y), "See hazards near home, get an alert before", font=f_sub, fill=INK_SOFT)
 d.text((80, sub_y + 48), "you clip the leash.", font=f_sub, fill=INK_SOFT)
 
 # URL footer (italic, navy)
@@ -116,7 +116,7 @@ manifest = os.path.normpath(
 texts = [
     "PAWWATCH · NEIGHBORHOOD WALK SAFETY",
     *h1_lines,
-    "See hazards near home, get a quiet alert before",
+    "See hazards near home, get an alert before",
     "you clip the leash.",
     "PAW-WATCH.APP",
     "PW",
