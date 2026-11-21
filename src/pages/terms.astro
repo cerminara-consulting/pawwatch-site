@@ -1,0 +1,31 @@
+---
+import Layout from "../layouts/Layout.astro";
+import { Content } from "../content-docs/terms.md";
+---
+
+<Layout
+  title="Terms of Use — PawWatch"
+  description="The terms that cover your use of PawWatch."
+>
+  <section class="wrap-narrow prose">
+    <Content />
+  </section>
+</Layout>
+
+<style>
+  /*
+   * The copy comes from src/content-docs/terms.md, which is synced
+   * from the iOS repo. The markdown owns the words; this only styles
+   * them.
+   *
+   * The date line is the first paragraph after the title. The old
+   * privacy policy page had it in a styled element, so it keeps that
+   * look.
+   */
+  section > h1 + p {
+    font-size: 0.875rem;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-bottom: 1.5em;
+  }
+</style>

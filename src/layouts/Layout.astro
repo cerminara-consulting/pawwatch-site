@@ -21,7 +21,7 @@ const path = Astro.url.pathname;
     <meta property="og:image:height" content="630" />
     <meta property="og:url" content={`https://paw-watch.app${path}`} />
     <meta property="og:type" content="website" />
-    <meta property="og:site_name" content="Paw Watch" />
+    <meta property="og:site_name" content="PawWatch" />
     <link rel="canonical" href={`https://paw-watch.app${path}`} />
     <meta name="twitter:card" content="summary_large_image" />
 
@@ -31,18 +31,20 @@ const path = Astro.url.pathname;
         <link rel="apple-touch-icon" href="/apple-touch-icon.png" sizes="180x180" />
     <meta name="description" content={description} />
     <title>{title}</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,500;0,9..144,600;0,9..144,700;1,9..144,400;1,9..144,500&family=Inter:wght@400;500;600;700&display=swap"
-      rel="stylesheet"
-    />
+    <link rel="stylesheet" href="/fonts/fonts.css" />
+    <!--
+      The two fonts used on every page, preloaded so the text renders in
+      the site's own typeface on the first paint instead of after a
+      round trip. These are same-origin files.
+    -->
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/fraunces-latin.woff2" crossorigin />
+    <link rel="preload" as="font" type="font/woff2" href="/fonts/inter-latin.woff2" crossorigin />
   </head>
   <body>
     <a href="#main" class="skip-link">Skip to main content</a>
     <header class="site-header">
       <div class="wrap header-row">
-        <a class="wordmark" href="/home/" aria-label="Paw Watch home">
+        <a class="wordmark" href="/" aria-label="PawWatch home">
           <img
             class="wordmark-img"
             src="/brand/pawwatch-logo-512.png"
@@ -51,7 +53,7 @@ const path = Astro.url.pathname;
             height="44"
             decoding="async"
           />
-          <span class="wordmark-text">Paw Watch</span>
+          <span class="wordmark-text">PawWatch</span>
         </a>
         <nav>
           <a href="/privacy-policy/" aria-current={path.startsWith('/privacy-policy') ? 'page' : undefined}>Privacy Policy</a>
@@ -64,12 +66,17 @@ const path = Astro.url.pathname;
     </main>
     <footer class="site-footer">
       <div class="wrap footer-row">
-        <p>© 2026 Paw Watch. A Cerminara Consulting product.</p>
+        <p>© 2026 PawWatch. A Cerminara Consulting product.</p>
         <p class="links">
           <a href="/privacy-policy/">Privacy</a>
           <span aria-hidden="true">·</span>
+          <a href="/terms/">Terms</a>
+          <span aria-hidden="true">·</span>
           <a href="/support/">Support</a>
         </p>
+      </div>
+      <div class="wrap footer-address">
+        <p>Cerminara Consulting, PO Box 23, Studley, VA 23162</p>
       </div>
     </footer>
   </body>
@@ -216,6 +223,23 @@ const path = Astro.url.pathname;
     color: var(--navy);
   }
 
+  /*
+   * The mailing address, on every page.
+   *
+   * It used to live only in the privacy policy's contact block, so a
+   * reader who wanted to write to the company had to go and read the
+   * privacy policy to find out where the company is. A mailing
+   * address is not a privacy disclosure. It belongs in the footer.
+   */
+  .footer-address {
+    margin-top: 10px;
+  }
+  .footer-address p {
+    margin: 0;
+    font-size: 0.78rem;
+    letter-spacing: 0.03em;
+  }
+
   /* Typography */
   h1, h2, h3 {
     font-family: var(--font-display);
@@ -280,6 +304,28 @@ const path = Astro.url.pathname;
   }
   dl.contact dd {
     margin: 0;
+  }
+  /*
+   * The label column was `max-content`, so a long label like
+   * "Registered agent (legal address of record)" was measured at its
+   * full width and never wrapped. On a 430px phone that pushed the
+   * value column off the right edge entirely, so the mailing address
+   * was unreadable on a phone.
+   *
+   * Below 560px the label stacks above its value. The address is the
+   * thing a reader came for, and it needs the full width.
+   */
+  @media (max-width: 560px) {
+    dl.contact {
+      grid-template-columns: minmax(0, 1fr);
+      gap: 2px;
+    }
+    dl.contact dt {
+      margin-top: 14px;
+    }
+    dl.contact dd {
+      margin-bottom: 6px;
+    }
   }
 
   /* Cards (used on support page) */
